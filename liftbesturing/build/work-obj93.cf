@@ -1,0 +1,7 @@
+v 4
+file "/home/harm/server/school/jaar4/digitale_techniek/liftbesturing/liftbesturing/" "liftbesturing_arch.vhdl" "0286b7e3491a9f36832c58867d90f90737f00b94" "20230212152210.146":
+  entity elevator_control at 1( 0) + 0 on 23;
+  architecture liftcontrol of elevator_control at 23( 1035) + 0 on 24;
+file "/home/harm/server/school/jaar4/digitale_techniek/liftbesturing/liftbesturing/" "liftbesturing_tb.vhdl" "f690fd82dc00f23837ccbe133f22b4124c2878ae" "20230212152210.151":
+  entity liftbesturing_tb at 1( 0) + 0 on 25;
+  architecture test of liftbesturing_tb at 9( 154) + 0 on 26;
