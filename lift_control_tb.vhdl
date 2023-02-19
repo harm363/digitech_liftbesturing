@@ -100,7 +100,8 @@ begin
     end process;
     
     -- process to generate reports on edges of signals
-    reports: process( positie_0, positie_1, positie_2, lftdr, keuze_0_hal, keuze_1_hal, keuze_2_hal, keuze_0_lift, keuze_1_lift, keuze_2_lift, lamp_0, lamp_1, lamp_2, op, neer, noodstop, deur_open, deur_dicht)
+    reports: process( positie_0, positie_1, positie_2, lftdr, keuze_0_hal, keuze_1_hal, keuze_2_hal, 
+                    keuze_0_lift, keuze_1_lift, keuze_2_lift, lamp_0, lamp_1, lamp_2, op, neer, noodstop, deur_open, deur_dicht)
     begin
         if rising_edge(positie_0) then 
             report "elevator on ground floor" severity note;
@@ -250,7 +251,7 @@ begin
         keuze_0_lift <= '1';
         wait for 15 ns;
         keuze_0_lift <= '0';
-        wait for 50 ns; 
+        wait for 500 ns; 
         report "new passanger had door obstructed, it is removed now" severity note;
         lift_ready <= '0';
         wait until rising_edge(positie_0);
@@ -268,6 +269,10 @@ begin
         wait for 15 ns;
         lift_ready <= '0';
         --wait for 50 ns;
+        wait for 20 ns;
+        deur_dicht <= '1';
+        wait for 15 ns;
+        deur_dicht <= '0';
         wait for 200 ns; 
 
 
