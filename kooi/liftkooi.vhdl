@@ -34,10 +34,6 @@ architecture cage of elevator_cage is
         call1: SR_FLIPFLOP port map (S=> BUTTON_FLOOR_1, R => reset_call1, Q=> FLOOR_REQ_1, clock => clock);
         call2: SR_FLIPFLOP port map (S=> BUTTON_FLOOR_2, R => reset_call2, Q=> FLOOR_REQ_2, clock => clock);
 
-        --reset_call0 <= ELEVATOR_ON_FLOOR_0 or not nRESET;
-        --reset_call1 <= ELEVATOR_ON_FLOOR_1 or not nRESET;
-        --reset_call2 <= ELEVATOR_ON_FLOOR_2 or not nRESET;
-
         main: process(clock, nRESET)
         begin
             if RISING_EDGE(clock) then
@@ -94,7 +90,14 @@ begin
     DOOR_STATE_OPEN=>DOOR_STATE_OPEN, DOOR_REQ_OPEN=>DOOR_REQ_OPEN, DOOR_REQ_CLOSED=>DOOR_REQ_CLOSED,
     nELEVATOR_READY => nELEVATOR_READY);
     
-    
+    clk: process
+    begin
+        clock <= '1';
+        wait for 25 ns;
+        clock <= '0';
+        wait for 25 ns;
+    end process;
+
 
     test: process 
     begin
